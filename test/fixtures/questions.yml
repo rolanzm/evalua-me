@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_id: 
+  topic_id: 
+  difficulty: 1
+  statement: MyString
+
+two:
+  exam_id: 
+  topic_id: 
+  difficulty: 1
+  statement: MyString

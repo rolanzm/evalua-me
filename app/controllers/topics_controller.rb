@@ -1,75 +1,45 @@
 class TopicsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  
- #TODO: module for rescue_from -- http://ionrails.com/2010/09/28/handling-404s-when-recordnotfound-unknownaction-and-routingerror/
-  
-  # GET /topics
-  # GET /topics.json
+
+  # GET course/:course_id/topics
   def index
-    @course = Course.find(params[:course_id])
-    rescue ActiveRecord::RecordNotFound #do |exception|
-      respond_to do |format|
-        #format.html { render 'error_' + status.to_s() + '.html', :status => status, :layout => 'errors'}
-        format.all { render :nothing => true, :status => 404 }
-      end
-    #end
-      #format.json { render :nothing => true, :status => 404 }
-    if @course
-      @topics = @course.topics.all
-    end
-    #@topics = Topic.all
+    @topics = Topic.all.where(:course_id => params[:course_id])
   end
 
-  # GET /topics/1
-  # GET /topics/1.json
+  # GET /course/:course_id/topics/:id
   def show
   end
 
-  # GET /topics/new
-  def new
-    @topic = Topic.new
-  end
-
-  # GET /topics/1/edit
-  def edit
-  end
-
-  # POST /topics
-  # POST /topics.json
+  # POST /course/:course_id/topics
   def create
     @topic = Topic.new(topic_params)
-
+    @topic.course_id = params[:course_id]
+    
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created, location: @topic }
+        format.json { render :show, status: :created, location: course_topic_url(@topic.course_id, @topic) }
       else
-        format.html { render :new }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PATCH/PUT /topics/1
-  # PATCH/PUT /topics/1.json
+  
+  # PATCH/PUT /course/:course_id/topics/:id
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @topic }
+        format.json { render :show, status: :ok, location: course_topic_url(@topic.course_id, @topic) }
       else
-        format.html { render :edit }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /topics/1
-  # DELETE /topics/1.json
+  # DELETE /course/:course_id/topics/:id
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

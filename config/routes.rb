@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
+
   get 'home/index'
 
-  #resources :topics
-  resources :courses
+# REST API in json 
+  scope "api/v1", defaults: {format: :json} do
+      resources :exams do
+        resources :questions do
+          resources :choices
+        end
+      end
+    
+      resources :courses do
+        resources :topics
+      end
 
-  get 'courses/:course_id/topics' => 'topics#index'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
