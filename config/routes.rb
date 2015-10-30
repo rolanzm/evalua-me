@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
+  root  'home#index'
 
 # REST API in json 
   scope "api/v1", defaults: {format: :json} do

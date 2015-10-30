@@ -1,62 +1,46 @@
 class ChoicesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_action :set_choice, only: [:show, :edit, :update, :destroy]
 
-  # GET /choices
-  # GET /choices.json
+  # GET /exams/:exam_id/questions/:question_id/choices
   def index
-    @choices = Choice.all
+    @exam_id = params[:exam_id]
+    @choices = Choice.all.where(:question_id => params[:question_id])
   end
 
-  # GET /choices/1
-  # GET /choices/1.json
+  # GET /exams/:exam_id/questions/:question_id/choices/:id
   def show
   end
 
-  # GET /choices/new
-  def new
-    @choice = Choice.new
-  end
-
-  # GET /choices/1/edit
-  def edit
-  end
-
-  # POST /choices
-  # POST /choices.json
+  # POST /exams/:exam_id/questions/:question_id/choices
   def create
     @choice = Choice.new(choice_params)
-
+    #@choice.exam_id = params[:exam_id]
+    @choice.question_id = params[:question_id]
     respond_to do |format|
       if @choice.save
-        format.html { redirect_to @choice, notice: 'Choice was successfully created.' }
-        format.json { render :show, status: :created, location: @choice }
+        format.json { render :show, status: :created, location: exam_question_choice_url(params[:exam_id], @choice.question_id, @choice) }
       else
-        format.html { render :new }
         format.json { render json: @choice.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /choices/1
-  # PATCH/PUT /choices/1.json
+  # PATCH/PUT /exams/:exam_id/questions/:question_id/choices/:id
   def update
     respond_to do |format|
       if @choice.update(choice_params)
-        format.html { redirect_to @choice, notice: 'Choice was successfully updated.' }
-        format.json { render :show, status: :ok, location: @choice }
+        format.json { render :show, status: :ok, location: exam_question_choice_url(params[:exam_id], @choice.question_id, @choice) }
       else
-        format.html { render :edit }
         format.json { render json: @choice.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /choices/1
-  # DELETE /choices/1.json
+  # DELETE /exams/:exam_id/questions/:question_id/choices/:id
   def destroy
     @choice.destroy
     respond_to do |format|
-      format.html { redirect_to choices_url, notice: 'Choice was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

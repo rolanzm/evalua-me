@@ -39,6 +39,8 @@ GEM
     arel (6.0.3)
     builder (3.2.2)
     byebug (6.0.2)
+    composite_primary_keys (8.1.1)
+      activerecord (~> 4.2.0)
     erubis (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -103,6 +105,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  composite_primary_keys (~> 8.1, >= 8.1.1)
   jbuilder (~> 2.0)
   mysql2 (~> 0.3.18)
   rails (= 4.2.1)
