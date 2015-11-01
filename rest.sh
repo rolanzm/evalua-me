@@ -1,5 +1,5 @@
 #!/bin/bash
-api="https://evalua-me-rtejo-urp.c9.io/api/v1"
+api="https://${C9_HOSTNAME}/api/v1"
 
 if [[ ! -z $3 ]] 
 then 

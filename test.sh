@@ -45,4 +45,12 @@ rake db:drop db:create db:migrate
 ./rest.sh PUT /exams/2/questions/4/choices/5 '{"statement":"Question 4 - Choice 5","selected":true}'
 ./rest.sh DELETE /exams/2/questions/4/choices/6
 ./rest.sh GET /exams/1/questions/1/choices
-
+#
+# -- custom --
+./rest.sh GET /students
+./rest.sh POST /students/1/exams/1 '{"date":"2015-11-01"}'
+./rest.sh DELETE /students/1/exams/1 '{"date":"2015-11-01"}'
+./rest.sh GET /students/1/exams
+./rest.sh GET /students/1/exams/1
+./rest.sh PUT /students/1/exams/1/results
+./rest.sh GET /students/1/exams/1/results
