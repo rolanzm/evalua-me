@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root  'home#index'
 
 # REST API in json 
-  scope "api/v1", defaults: {format: :json} do
+  scope "api/v1", defaults: {format: :json}, only: [:index, :show, :create, :update, :destroy] do 
       resources :exams do
         resources :questions do
           resources :choices

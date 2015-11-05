@@ -1,7 +1,8 @@
-<div xxng-controller="MakeExamCtrl as mec" >
+<div>
     <h2>[exam new]</h2>
 
     <div>
+        <input type="text" ng-model="exam.name"/>
         <label>Asignatura</label>
         <select ng-model="exam.course" ng-options="c.name for c in courses"  ng-change="setCourse()" ng-disabled="exam.questions.length > 0" ></select>
 
@@ -21,7 +22,7 @@
         <button ng-click="addChoice()">Add</button>
         <div ng-repeat="c in currentQuestion.choices">
             <input type="checkbox" ng-model="c.selected" ng-checked="c.selected" />
-            <input type="textarea" ng-model="c.statement" >{{c.statement}}</input>
+            <input type="textarea" ng-model="c.statement" />
         </div>
     </div>
 </div>
