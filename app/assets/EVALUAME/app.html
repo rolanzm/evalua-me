@@ -16,11 +16,15 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/bootstrap-theme.css">
+
+    <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/index.css">
+
     <link rel="stylesheet" href="bower_components/jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css"/>
     <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/jqx.custom.css" type="text/css"/>
     <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/evaluame.css">
 </head>
 <body ng-app="EvaluaMe">
+
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -29,6 +33,34 @@
     <ng-view></ng-view>
 </div>
 <!-- /container -->
+
+
+<div class="container">
+
+
+    <section class="main">
+        <h2 class="Titulo">Evalua-me</h2>
+
+        <form class="form-1">
+            <p class="field">
+                <input type="text" id="Usuario" placeholder="Usuario" style="text-transform:uppercase;" maxlength="6">
+                <i class="icon-user icon-large"></i>
+            </p>
+            <p class="field">
+                <input type="password" id="Password" placeholder="CONTRASEÑA">
+                <i class="icon-lock icon-large"></i>
+            </p>
+            <p class="submit">
+                <button type="button" id="btnLogin"><i class="icon-arrow-right icon-large" style="border:none;"></i></button>
+            </p>
+        </form>
+    </section>
+
+</div>
+
+
+
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-dateFormat/dist/jquery-dateFormat.min.js"></script>
 
