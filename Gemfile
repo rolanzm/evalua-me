@@ -47,3 +47,4 @@ end
 
 gem 'angularjs-rails', '~> 1.4', '>= 1.4.7'
 
+gem 'unicorn'

@@ -47,10 +47,10 @@ rake db:drop db:create db:migrate
 ./rest.sh GET /exams/1/questions/1/choices
 #
 # -- custom --
-./rest.sh GET /students
-./rest.sh POST /students/1/exams/1 '{"date":"2015-11-01"}'
-./rest.sh DELETE /students/1/exams/1 '{"date":"2015-11-01"}'
-./rest.sh GET /students/1/exams
-./rest.sh GET /students/1/exams/1
-./rest.sh PUT /students/1/exams/1/results
-./rest.sh GET /students/1/exams/1/results
+#./rest.sh GET /students
+#./rest.sh POST /students/1/exams/1 '{"date":"2015-11-01"}'
+#./rest.sh DELETE /students/1/exams/1 '{"date":"2015-11-01"}'
+#./rest.sh GET /students/1/exams
+#./rest.sh GET /students/1/exams/1
+#./rest.sh PUT /students/1/exams/1/results
+#./rest.sh GET /students/1/exams/1/results
