@@ -1,0 +1,14 @@
+[
+	{"curso":"Curso 01","codexamen":"A001","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 02","codexamen":"A002","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 03","codexamen":"A003","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 04","codexamen":"A004","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 05","codexamen":"A005","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 06","codexamen":"A006","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 07","codexamen":"A007","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 08","codexamen":"A008","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 09","codexamen":"A009","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 10","codexamen":"A010","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 11","codexamen":"A011","npreguntas":"20","disponible":"OK"},
+	{"curso":"Curso 12","codexamen":"A012","npreguntas":"20","disponible":"OK"}
+]

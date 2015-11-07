@@ -1,0 +1,8 @@
+[
+	{"id":"1","descripcion":"Programación Orientada a Objetos I"},
+	{"id":"2","descripcion":"Programación Orientada a Objetos II"},
+	{"id":"3","descripcion":"Analisis de Sistemas I"},
+	{"id":"4","descripcion":"Analisis de Sistemas II"},
+	{"id":"5","descripcion":"Base de Datos I"},
+	{"id":"6","descripcion":"Base de Datos II"}
+]
