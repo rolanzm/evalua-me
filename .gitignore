@@ -15,5 +15,5 @@
 *.pid
 *.sock
 /.idea
-/public/evaluame/bower_components
-/public/evaluame/.idea
+/public/bower_components
+/public/.idea

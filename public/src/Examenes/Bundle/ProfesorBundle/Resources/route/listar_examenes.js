@@ -4,7 +4,7 @@
 ListarExamenes.getAngular().config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/examenes/profesor/listar-examenes/listar-examenes.html', {
-            templateUrl: ListarExamenes.getView() + '/ListarExamenes.html',
+            templateUrl: ListarExamenes.getView() + '/listarExamenes.html',
             controller: 'ProfesorBundle:ListarExamenes/ListarExamenes:manage'
         })
         .otherwise({

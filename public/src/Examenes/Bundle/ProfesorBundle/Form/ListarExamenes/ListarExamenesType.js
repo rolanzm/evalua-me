@@ -6,7 +6,7 @@ ListarExamenes.getAngular().factory('ProfesorBundle_ListarExamenes_ListarExamene
         EvaluaMe.init();
         //AQUI SE DEBEN CARGAR LOS CONTROLES JQWIDGETS
 
-        var url = "EVALUAME/datasource/dataNotasAlumnos.json";
+        var url = "src/datasource/dataNotasAlumnos.json";
         // prepare the data
         var source =
         {
