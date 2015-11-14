@@ -2,8 +2,7 @@
   "name": "Evalua-me",
   "version": "0.1.0",
   "homepage": "https://github.com/rolanzm/evalua-me",
-  "authors": [
-  ],
+  "authors": [],
   "description": "Sistema de Evaluaciones Online",
   "license": "MIT",
   "private": true,
@@ -25,6 +24,7 @@
     "jquery.inputmask": "~3.2.3",
     "jquery-tokeninput": "~1.7.0",
     "jquery-dateFormat": "~1.0.2",
-    "ngRouteNames": "~1.1.7"
+    "ngRouteNames": "~1.1.7",
+    "angular-location-update": "~0.0.2"
   }
 }
