@@ -3,7 +3,7 @@
  */
 ResultadoExamen.getAngular().config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/examenes/profesor/resultado-examen/resultado-examen.html', {
+        .when('/examenes/profesor/resultado-examen/', {
             templateUrl: ResultadoExamen.getView() + '/ResultadoExamen.html',
             controller: 'ProfesorBundle:ResultadoExamen/ResultadoExamen:manage'
         })

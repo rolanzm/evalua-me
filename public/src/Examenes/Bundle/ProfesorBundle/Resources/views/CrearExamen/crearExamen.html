@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height:100%">
+    <tr>
+        <td colspan="2" height="10%"><div id="jqxToolBar"></div></td>
+    </tr>
+    <tr height="10%">
+        <td width="20%">
+            <div class="CantPreg">Preguntas: <span id="nPreg" style="font-weight:bold;">15</span></div>
+
+            <div id="btnAddPreg" style='float: right; margin-right: 0px; margin-top:6px; margin-right:5px;'>
+                <img style='position: relative; margin-top: 8px;' src='images/add.png'/>
+                <span style='margin-left: 4px; position: relative; top: -8px;'>AGREGAR</span>
+            </div>
+
+        </td>
+        <td width="80%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td valign="top"><div id="jqxListBox"></div></td>
+        <td valign="top">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+                <tr height="10%">
+                    <td>
+
+                        <div style="float:left; margin-left:5px; margin-top:12px; font-family:Arial, Helvetica, sans-serif; ">Dificultad:</div>
+                        <div style="float:left; margin-top:7px; margin-left:5px; " id='Dificultad'></div>
+                        <div style="float:left; margin-left:5px; margin-top:12px; font-family:Arial, Helvetica, sans-serif;">Tipo:</div>
+                        <div style="float:left; margin-top:7px; margin-left:5px; " id='Tipo'></div>
+                        <div style="float:left; margin-left:5px; margin-top:12px; font-family:Arial, Helvetica, sans-serif;">Tema:</div>
+                        <div style="float:left; margin-top:7px; margin-left:5px; " id='Tema'></div>
+
+
+                        <div id="btnDeletePreg" style='float: left; margin-left: 15px; margin-top:0px; margin-right:5px;'>
+                            <img style='position: relative; margin-top: 7px;' src='images/delete.png'/>
+                        </div>
+
+                        <div id="btnAddRpta" style='float: left; margin-left: 15px; margin-top:0px; margin-right:5px;'>
+                            <img style='position: relative; margin-top: 3px;' src='images/Plus.png'/>
+                        </div>
+
+
+                    </td>
+                </tr>
+                <tr height="20%">
+                    <td><textarea id="jqxTextArea" style="height:200px;"></textarea></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+
+                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                            <tr>
+                                <td width="5%" align="center"><input type="checkbox" id="Chk"></td>
+                                <td><textarea rows="4" style="width: 100%" id="Rpta"></textarea></td>
+                                <td width="5%" valign="middle" align="center"><img src="images/delete.png" style="cursor:pointer;"></td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>

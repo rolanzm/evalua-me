@@ -5,7 +5,7 @@
 RendirExamen.getAngular().config((
     function ($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/examenes/alumno/rendir-examen/rendir-examen.html', {
+            .when('/examenes/alumno/rendir-examen/', {
                 templateUrl: RendirExamen.getView() + '/rendirExamen.html',
                 controller: 'ExamenesAlumnoBundle:RendirExamen/RendirExamen:manage'
             })

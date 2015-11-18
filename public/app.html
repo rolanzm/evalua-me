@@ -22,6 +22,70 @@
     <link rel="stylesheet" href="bower_components/jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css"/>
     <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/jqx.custom.css" type="text/css"/>
     <link rel="stylesheet" href="src/Core/Bundle/CoreBundle/Resources/public/css/evaluame.css">
+    <style type="text/css">
+        body, html{height:100%}
+        textarea{
+            height:100%
+        }
+
+        .Examen{
+            float: left;
+            margin-left: 15px;
+            margin-top: 20px;
+            font-size:16px;
+        }
+
+        .NumExamen{
+            float: left;
+            margin-left: 5px;
+            margin-top: 20px;
+            font-size:16px;
+        }
+
+        .Asignatura{
+            float: left;
+            margin-left: 35px;
+            margin-top: 20px;
+            font-size:16px;
+        }
+
+        .ListAsig{
+            float: left;
+            margin-left: 5px;
+            margin-top: 20px;
+        }
+
+        .Minutos{
+            float: left;
+            margin-left: 35px;
+            margin-top: 20px;
+            font-size:16px;
+        }
+
+        .NumMin{
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .btnSave{
+            float: right;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .CantPreg{
+            font-family:Verdana, Geneva, sans-serif;
+            float: left;
+            margin-left: 10px;
+            margin-top: 25px;
+            font-size:16px;
+        }
+
+        input[type=checkbox] {
+            zoom: 2;
+        }
+    </style>
 </head>
 <body ng-app="EvaluaMe">
 
@@ -41,7 +105,7 @@
     <section class="main">
         <h2 class="Titulo">Evalua-me</h2>
 
-        <form class="form-1" style="height: 200px;">
+        <form class="form-1" style="height: 120px;">
             <p class="field">
                 <input type="text" id="Usuario" placeholder="Usuario" style="text-transform:uppercase;" maxlength="6">
                 <i class="icon-user icon-large"></i>
