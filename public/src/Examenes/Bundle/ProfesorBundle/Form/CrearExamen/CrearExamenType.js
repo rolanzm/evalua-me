@@ -24,7 +24,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
                         tool.append(label);
                         break;
                     case 3:
-                        var url = "datasource/dataListaAsignaturas.json";
+                        var url = "src/datasource/dataListaAsignaturas.json";
                         // prepare the data
                         var source =
                         {
@@ -112,6 +112,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
              source: quotes */
         });
 
+        $("#TblCrearExamen").css("height", vHeight);
 
     }
     return {

@@ -227,3 +227,66 @@ input.form-control, textarea.form-control, select.form-control {
     width: 100%;
     margin: 0px;
 }
+
+
+textarea{
+    height:100%
+}
+
+.Examen{
+    float: left;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-size:16px;
+}
+
+.NumExamen{
+    float: left;
+    margin-left: 5px;
+    margin-top: 20px;
+    font-size:16px;
+}
+
+.Asignatura{
+    float: left;
+    margin-left: 35px;
+    margin-top: 20px;
+    font-size:16px;
+}
+
+.ListAsig{
+    float: left;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.Minutos{
+    float: left;
+    margin-left: 35px;
+    margin-top: 20px;
+    font-size:16px;
+}
+
+.NumMin{
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.btnSave{
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.CantPreg{
+    font-family:Verdana, Geneva, sans-serif;
+    float: left;
+    margin-left: 10px;
+    margin-top: 25px;
+    font-size:16px;
+}
+
+input[type=checkbox] {
+    zoom: 2;
+}
