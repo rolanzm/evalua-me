@@ -60,7 +60,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
                         //tool.jqxInput({ width: 100 });
                         break;
                     case 6:
-                        var btn = $("<div id='btnSave' style='float: right; position: relative; margin-left: 30px; margin-top:4px; margin-right:5px; margin-bottom: 5px;'><img style='position: relative; margin-top: 12px;' src='images/save.png'/><span style='margin-left: 4px; position: relative; top: -3px;'>GUARDAR</span></div>");
+                        var btn = $("<div id='btnSave' style='float: right; position: relative; margin-left: 30px; margin-top:4px; margin-right:5px; margin-bottom: 5px;'><img style='position: relative; margin-top: 12px;' src='images/save.png'/><span style='margin-left: 4px; position: relative; top: 6px;'>GUARDAR</span></div>");
                         tool.append(btn);
                         btn.jqxButton({ width:100, height: 40, theme: theme });
                         break;
