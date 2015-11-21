@@ -7,7 +7,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
         //AQUI SE DEBEN CARGAR LOS CONTROLES JQWIDGETS
 
 
-        $("#jqxToolBar").jqxToolBar({
+        /*$("#jqxToolBar").jqxToolBar({
             width: '100%', height: '100%', theme: theme, tools: 'custom | custom | custom | dropdownlist | custom | custom | custom',
             initTools: function (type, index, tool, menuToolIninitialization) {
                 switch (index) {
@@ -55,7 +55,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
                         tool.append(label);
                         break;
                     case 5:
-                        var input = $("<input type='number' name='minutes' class='NumMin' style='height:15px;text-align:right;' min='1' max='180' value='1'>");
+                        var input = $("<input type='number' name='minutes' class='NumMin' style='height:25px;text-align:right;' min='1' max='180' value='1'>");
                         tool.append(input);
                         //tool.jqxInput({ width: 100 });
                         break;
@@ -66,12 +66,48 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
                         break;
                 }
             }
+        });*/
+
+        var url = "src/datasource/dataListaAsignaturas.json";
+        var source =
+        {
+            datatype: "json",
+            datafields: [
+                { name: 'id' },
+                { name: 'descripcion' }
+            ],
+            id: 'id',
+            url: url
+        };
+        var dataAdapter = new $.jqx.dataAdapter(source);
+
+        $("#Asignatura").jqxDropDownList({
+            width: 130,
+            height: 25,
+            source: dataAdapter,
+            displayMember: "descripcion",
+            valueMember: "id",
+            dropDownWidth: 450,
+            theme: theme
         });
 
-        $("#btnAddPreg").jqxButton({width: 120, height: 50, theme: theme});
 
-        $("#btnDeletePreg").jqxButton({width: 60, height: 30, theme: theme});
-        $("#btnAddRpta").jqxButton({width: 60, height: 30, theme: theme});
+        $("#btnAddPreg").jqxButton({
+            width: 60,
+            height: 40,
+            theme: theme
+        });
+
+        $("#btnDeletePreg").jqxButton({
+            width: 60,
+            height: 40,
+            theme: theme
+        });
+        $("#btnAddRpta").jqxButton({
+            width: 60,
+            height: 40,
+            theme: theme
+        });
 
         var sourceDificultad = [
             "ALTA",
@@ -95,6 +131,21 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
         $("#Tipo").jqxDropDownList({ source: sourceTipo, selectedIndex: 0, width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
         $("#Tema").jqxDropDownList({ source: sourceTema, selectedIndex: 0, width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
 
+        $("#Minutos").jqxNumberInput({
+            width: 70,
+            height: 25,
+            decimal: 0,
+            decimalDigits: 0,
+            min: 1,
+            spinButtons: true,
+            inputMode: 'simple'
+        });
+
+        $("#btnSave").jqxButton({
+            width: 120,
+            height: 40,
+            theme: theme
+        });
 
         $("#jqxListBox").jqxListBox({
             //source: dataAdapter,
