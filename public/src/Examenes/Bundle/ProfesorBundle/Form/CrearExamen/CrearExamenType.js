@@ -68,28 +68,49 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
             }
         });*/
 
-        var url = "src/datasource/dataListaAsignaturas.json";
-        var source =
-        {
-            datatype: "json",
-            datafields: [
-                { name: 'id' },
-                { name: 'descripcion' }
-            ],
-            id: 'id',
-            url: url
-        };
-        var dataAdapter = new $.jqx.dataAdapter(source);
+        var 
+            daCourse = new $.jqx.dataAdapter({
+                datatype: "json",
+                datafields: [
+                    { name: 'id' },
+                    { name: 'name' }
+                ],
+                id: 'id',
+                url: 'api/v1/courses'
+            });
+            
 
         $("#Asignatura").jqxDropDownList({
             width: 130,
             height: 25,
-            source: dataAdapter,
-            displayMember: "descripcion",
+            source: daCourse,
+            displayMember: "name",
             valueMember: "id",
             dropDownWidth: 450,
             theme: theme
-        });
+        }).bind('select', function(event) 
+		{
+			if (event.args)
+			{
+				var index = $("#Asignatura").jqxDropDownList('selectedIndex');		
+				if (index != -1)
+				{
+				    var record = daCourse.records[index];
+				    var daTopic = new $.jqx.dataAdapter({
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id' },
+                            { name: 'name' }
+                        ],
+                        id: 'id',
+                        url: 'api/v1/courses/' + record.id + '/topics'
+                    });
+				    
+				    $("#Tema").jqxDropDownList('source',daTopic);
+
+				}
+			}
+		});
 
 
         $("#btnAddPreg").jqxButton({
@@ -120,16 +141,11 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
             "Tipo 03",
             "Tipo 04"
         ];
-        var sourceTema = [
-            "Tema 01",
-            "Tema 02",
-            "Tema 03",
-            "Tema 04"
-        ];
+        
 
         $("#Dificultad").jqxDropDownList({ source: sourceDificultad, selectedIndex: 0, width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
         $("#Tipo").jqxDropDownList({ source: sourceTipo, selectedIndex: 0, width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
-        $("#Tema").jqxDropDownList({ source: sourceTema, selectedIndex: 0, width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
+        $("#Tema").jqxDropDownList({ source: [], selectedIndex: 0, displayMember: "name", width: '80', height: '25', dropDownWidth: 250, autoDropDownHeight: true, theme: theme});
 
         $("#Minutos").jqxNumberInput({
             width: 70,
