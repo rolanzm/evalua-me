@@ -1,10 +1,126 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="container" style="width: 80%">
+    <div class="row" style="height: 10%;">
 
-</body>
-</html>
+        <div class="col-md-12">
+            <div style="float: left; position: relative; margin-left:-15px; height: 100%;">
+                <img src="images/evaluame.png">
+            </div>
+            <div style="float: left; position: relative; margin-left: 15px; margin-top: 30px; ">
+                <h1>EXAMEN: <span id="IdExamen">AT001</span></h1>
+            </div>
+            <div style="float: left; position: relative; margin-left: 10px; margin-top: 35px; ">
+                <LABEL for="Asignatura">ASIGNATURA:</LABEL>
+                <div id="Asignatura"></div>
+            </div>
+            <div style="float: left; position: relative; margin-left: 10px; margin-top: 35px; ">
+                <LABEL for="Minutos">MINUTOS:</LABEL>
+                <div id="Minutos"></div>
+            </div>
+
+            <div style="float: left; position: relative; margin-left: 10px; margin-top: 35px; ">
+                <div id='btnSave' style='float: left; position: relative; margin-left: 10px; margin-top:4px; margin-right:5px; margin-bottom: 5px;'>
+                    <img style='position: relative; margin-top: 12px;' src='images/save.png'/>
+                    <span style='margin-left: 4px; position: relative; top: 6px;'>GUARDAR</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row" style="height: 90%;">
+        <div class="col-md-3">
+
+            <div class="row" style="height: 10%">
+                <h4 STYLE="float:left; position: relative; margin-left: 10px; margin-top: 30px;">PREGUNTAS: <span id="nPreg">25</pan></h4>
+                <!--<div id="btnAddPreg" style='float: right; position: relative; margin-right: 5px; margin-top:15px;'>
+                    <img style='position: relative; margin-top: 4px;' src='images/add.png'/>
+                    &lt;!&ndash;<span style='margin-left: 4px; position: relative; top: 4px;'>AGREGAR</span>&ndash;&gt;
+                </div>-->
+            </div>
+            <div class="row" style="height: 90%">
+                <div id="jqxListBox"></div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <div class="row" style="height: 10%;">
+                <!--<div style="float: left; position: relative; margin-left: 30px; margin-top: 12px; ">
+                    <label for="Dificultad">DIFICULTAD</label>
+                    <div id='Dificultad'></div>
+                </div>
+
+                <div style="float: left; position: relative; margin-left: 30px; margin-top: 12px; ">
+                    <label for="Tipo">TIPO</label>
+                    <div id='Tipo'></div>
+                </div>
+
+                <div style="float: left; position: relative; margin-left: 30px; margin-top: 12px; ">
+                    <label for="Tema">TEMA</label>
+                    <div id='Tema'></div>
+                </div>
+
+                <div id="btnDeletePreg" style='float: left; position: relative; margin-left: 30px; margin-top: 26px;'>
+                    <img style='position: relative; margin-top: 10px;' src='images/delete.png'/>
+                </div>
+
+                <div id="btnAddRpta" style='float: left; position: relative; margin-left: 20px; margin-top: 26px;'>
+                    <img style='position: relative; margin-top: 10px;' src='images/Plus.png'/>
+                </div>-->
+
+            </div>
+
+            <div class="row" style="height: 15%; padding: 0px; margin-left: 5%">
+                <textarea id="jqxTextArea" style="width: 100% !important;, height: 100% !important"></textarea>
+            </div>
+
+            <div class="row" style="height: 10%; margin-left: 5%">
+
+                <div style="padding: 5px;">
+                    <input type="checkbox" id="Chk1" style="float: left; position: relative; margin-top: 15px;">
+                    <!--<textarea rows="4" id="Rpta1" style="float: left; position: relative; margin-left: 5px; width: 90%"></textarea>-->
+                    <img src="images/delete.png" style="cursor:pointer; float: left; position: relative; margin-left:5px; margin-top: 30px;">
+                </div>
+
+            </div>
+
+            <div class="row" style="height: 10%; margin-left: 5%">
+
+                <div style="padding: 5px;">
+                    <input type="checkbox" id="Chk2" style="float: left; position: relative; margin-top: 15px;">
+                    <!--<textarea rows="4" id="Rpta1" style="float: left; position: relative; margin-left: 5px; width: 90%"></textarea>-->
+                    <img src="images/delete.png" style="cursor:pointer; float: left; position: relative; margin-left:5px; margin-top: 30px;">
+                </div>
+
+            </div>
+
+            <div class="row" style="height: 10%; margin-left: 5%">
+
+                <div style="padding: 5px;">
+                    <input type="checkbox" id="Chk3" style="float: left; position: relative; margin-top: 15px;">
+                    <!--<textarea rows="4" id="Rpta1" style="float: left; position: relative; margin-left: 5px; width: 90%"></textarea>-->
+                    <img src="images/delete.png" style="cursor:pointer; float: left; position: relative; margin-left:5px; margin-top: 30px;">
+                </div>
+
+            </div>
+
+            <div class="row" style="height: 10%; margin-left: 5%">
+
+                <div style="padding: 5px;">
+                    <input type="checkbox" id="Chk4" style="float: left; position: relative; margin-top: 15px;">
+                    <!--<textarea rows="4" id="Rpta1" style="float: left; position: relative; margin-left: 5px; width: 90%"></textarea>-->
+                    <img src="images/delete.png" style="cursor:pointer; float: left; position: relative; margin-left:5px; margin-top: 30px;">
+                </div>
+
+            </div>
+
+
+
+
+            <div class="row" style="height: 10%; margin-left: 0%; margin-top: 5%">
+                <img src="images/arrow-left.png" style="float: left;" align="left">
+                <img src="images/arrow-right.png" style="float: right;" align="right">
+            </div>
+
+        </div>
+    </div>
+</div>

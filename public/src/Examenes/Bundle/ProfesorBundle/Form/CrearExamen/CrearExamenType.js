@@ -68,8 +68,7 @@ CrearExamen.getAngular().factory('ProfesorBundle_CrearExamen_CrearExamenType', f
             }
         });*/
 
-        var 
-            daCourse = new $.jqx.dataAdapter({
+        var daCourse = new $.jqx.dataAdapter({
                 datatype: "json",
                 datafields: [
                     { name: 'id' },
