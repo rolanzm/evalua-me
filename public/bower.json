@@ -16,7 +16,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "jquery": "~2.1.4",
-    "bootstrap": "~3.3.5",
+    "bootstrap": "~3.3.6",
     "angular-route": "~1.4.7",
     "angular-router-advanced": "~1.0.3",
     "angular-gesture": "~1.4.5",
@@ -25,6 +25,9 @@
     "jquery-tokeninput": "~1.7.0",
     "jquery-dateFormat": "~1.0.2",
     "ngRouteNames": "~1.1.7",
-    "angular-location-update": "~0.0.2"
+    "angular-location-update": "~0.0.2",
+    "angular-loading-bar": "~0.8.0",
+    "angular-animate": "~1.4.8",
+    "angular-bootstrap": "~0.14.3"
   }
 }

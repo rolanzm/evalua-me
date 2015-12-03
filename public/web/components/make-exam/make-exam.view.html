@@ -4,18 +4,21 @@
     <div>
         <input type="text" ng-model="exam.name"/>
         <label>Asignatura</label>
-        <select ng-model="exam.course" ng-options="c.name for c in courses"  ng-change="setCourse()" ng-disabled="exam.questions.length > 0" ></select>
+        <select class="form-control ng-pristine ng-valid ng-touched" ng-model="exam.course" ng-options="c.name for c in courses"  ng-change="setCourse()" ng-disabled="exam.questions.length > 0" ></select>
 
-        <button ng-click="save()">Guardar</button>
+        <button class="btn btn-sm btn-primary" ng-click="save()">Guardar</button>
     </div>
+    <uib-tabset>
+        <uib-tab ng-repeat="q in exam.questions" heading="{{q.id}}" active="currentQuestion"></uib-tab>
+    </uib-tabset>
     <div class="questions-list">
-        <button ng-click="addQuestion()">Add</button>
+        <button class="btn btn-sm btn-primary" ng-click="addQuestion()">Add</button>
         <div ng-repeat="q in exam.questions" ng-click="selectQuestion(q)">xx</div>
     </div>
     <div class="current-question" ng-show="currentQuestion">
-        <label>Dificultad</label><select ng-model="currentQuestion.difficulty" ng-options="d for d in dificulties"></select>
+        <label>Dificultad</label><select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.difficulty" ng-options="d.name for d in difficulties"></select>
         <!--<labe>Tipo</labe><select ng-model="currentQuestion.type" ng-options="c.name for c in courses"></select> -->
-        <labe>Tema</labe><select ng-model="currentQuestion.topic" ng-options="t.name for t in topics"></select>
+        <labe>Tema</labe><select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.topic" ng-options="t.name for t in topics"></select>
         <input type="textarea" ng-model="currentQuestion.statement" placeholder="(Enunciado)"/>
         
         <h3>Opciones</h3>
