@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <h2>{{exam.course.name}}</h2>
+        <h3>{{exam.name}}</h3>
+       
+    </div>
+    <!-- numeracion o carrousel-->
+
+    <div class="current-question" ng-show="currentQuestion">
+        <div class="q-statement">{{currentQuestion.statement}}</div>
+        
+        <div ng-repeat="c in currentQuestion.choices">
+            <label class="q-answer">
+                <input type="checkbox" ng-model="c.mySelection" ng-checked="c.mySelection" />
+                <span>{{c.statement}}</span>
+            </label>
+        </div>
+    </div>
+    
+    <!--test control -->
+    <uib-pagination total-items="exam.questions.length" ng-model="currentQuestionNumber" ng-change="selectQuestion(currentQuestionNumber)"
+    class="pagination-sm" boundary-links="true" items-per-page="1"  
+    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+    </uib-pagination>
+    <div>
+        <button class="btn btn-sm btn-primary" ng-click="examTaken()">Evaluar</button>
+    </div>
+</div>

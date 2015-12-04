@@ -8,11 +8,22 @@ var app = angular.module('evalue-me', [
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeBar = true;
-    cfpLoadingBarProvider.includeSpinner = true;
+    cfpLoadingBarProvider.includeSpinner = false;
     cfpLoadingBarProvider.latencyThreshold = 100;
     cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
 }]);
 
+//Fix ui-bootstrap
+// app.config(function($provide) {
+//   $provide.decorator('tabDirective', function($delegate) {
+//     //we now get an array of all the datepickerDirectives, 
+//     //and use the first one
+//     $delegate[0].templateUrl = 'template/url.html';
+//     return $delegate;
+//   });
+// });
+
+//custom http client
 app.factory('http', ['$http', function($http) {
     var http = function() {
         var api = '/api/v1';

@@ -9,6 +9,7 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
             questions : []
         };
         $scope.currentQuestion  = null;
+        $scope.currentQuestionIndex = 0;
         // [ common data ]
         $scope.difficulties = [
             { name: 'Alto', id: 2 },
@@ -34,8 +35,7 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
                                 dQ[iQ].topic = $scope.topics.filter(function(t) { return t.id == dQ[iQ].topic_id;})[0];
                                 dQ[iQ].difficulty = $scope.difficulties.filter(function(d) { return d.id == dQ[iQ].difficulty;})[0];
                             }
-                            $scope.currentQuestion = $scope.exam.questions[0];
-                            
+                            $scope.selectQuestion(1);
                             //TODO: stop loading and show UI!!
                         });    
                     });
@@ -73,7 +73,15 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
                 callback();
              });
         };
-        $scope.selectQuestion = function (question) {
+        $scope.selectQuestion = function (currentQuestionNumber) {
+            var question = $scope.exam.questions[currentQuestionNumber-1];
+            if (isNaN(currentQuestionNumber)) {
+                //Must be an object
+                question = currentQuestionNumber;
+                currentQuestionNumber = $scope.exam.questions.indexOf(question);
+            }
+            $scope.currentQuestionIndex = currentQuestionNumber;
+            
             if (!question.loaded) {
                 //TODO: loading...
                 http.get('/exams/' + $scope.exam.id + '/questions/' + question.id + '/choices', function(sC, dC) {
@@ -81,10 +89,12 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
                     question.loaded = true;
                     
                     $scope.currentQuestion = question;
+                    
                 });
             } else {
                 $scope.currentQuestion = question;
             }
+            
         };
         $scope.isQuestionSelected = function (q) {
             return q == $scope.currentQuestion;
