@@ -1,3 +1,6 @@
-<ul>
-  <li ng-repeat="e in exams"><a ng-href="#/exams/{{e.id}}">{{e.name}}</a></li>
-</ul>
+<div class="list-group">
+  <a ng-if="profile == 'teacher'" class="list-group-item add-exam" ng-href="#/exams/new">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Nuevo examen...
+  </a>
+  <a ng-repeat="e in exams" class="list-group-item" ng-href="#/exams/{{e.id}}{{profile==='teacher'?'':'/take'}}">{{e.name}}</a>
+</div>

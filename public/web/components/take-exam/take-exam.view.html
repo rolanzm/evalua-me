@@ -18,11 +18,11 @@
     </div>
     
     <!--test control -->
-    <uib-pagination total-items="exam.questions.length" ng-model="currentQuestionNumber" ng-change="selectQuestion(currentQuestionNumber)"
+    <uib-pagination total-items="exam.questions.length" ng-model="currentQuestionNumber" ng-change="selectQuestion(currentQuestionNumber-1)"
     class="pagination-sm" boundary-links="true" items-per-page="1"  
     previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
     </uib-pagination>
     <div>
-        <button class="btn btn-sm btn-primary" ng-click="examTaken()">Evaluar</button>
+        <button class="btn btn-sm btn-primary" ng-click="examTaken()">Enviar Examen</button>
     </div>
 </div>

@@ -1,8 +1,8 @@
 var app = angular.module('evalue-me', [
-    'ngRoute'
+     'ngRoute'
+    ,'ngCookies'
     ,'ngLocationUpdate'
     ,'angular-loading-bar'
-    ,'ngAnimate'
     ,'ui.bootstrap'
 ]);
 
@@ -65,3 +65,29 @@ app.factory('http', ['$http', function($http) {
     } 
     return new http();
 }]);
+
+app.directive('autoFocus', function() {
+    return {
+        link: {
+            pre: function preLink(scope, element, attr) {
+            },
+            post: function postLink(scope, element, attr) {
+                element[0].focus();
+            }
+        }
+    }
+});
+app.directive('focusOn', function() {
+   return function(scope, elem, attr) {
+     if (attr.focusOn !== '') {
+      scope.$on(attr.focusOn, function(e, name) {
+        elem[0].focus();
+      });
+     }
+   };
+});
+app.factory('afterLoad', function ($rootScope, $timeout) {
+  return function(func) {
+    $timeout(func);
+  }
+});

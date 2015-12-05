@@ -1,6 +1,19 @@
-app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$location',
-    function ($scope, $routeParams, $q, http, $location) {
+app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$location', '$cookies', 'afterLoad',
+    function ($scope, $routeParams, $q, http, $location, $cookies, afterLoad) {
+        
+        $scope.profile = $cookies.get('profile');
+        if ($scope.profile == null) {
+            $location.path('/');
+            return;
+        }
+        
 
+        //not allowed to change
+        if ($scope.profile !== 'teacher' && !$location.path().toLowerCase().endsWith('/take')) {
+            $location.path('/exams');
+            return;
+        }
+        
         // [ exam data ]
         $scope.exam = {
             id: null,
@@ -9,7 +22,7 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
             questions : []
         };
         $scope.currentQuestion  = null;
-        $scope.currentQuestionIndex = 0;
+        $scope.currentQuestionNumber = 0;
         // [ common data ]
         $scope.difficulties = [
             { name: 'Alto', id: 2 },
@@ -22,12 +35,11 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
         }).then(function(){
         
             if ($routeParams.id != 'new') {
-                //TODO: loading by UI
+
                 http.get('/exams/' + $routeParams.id, function(s, d){
                     $scope.exam = angular.extend($scope.exam, d);
                     $scope.setCourse(function(){
                         http.get('/exams/' + $routeParams.id + '/questions', function(sQ, dQ) {
-                            
                             
                             $scope.exam.questions = dQ;
                             
@@ -35,30 +47,12 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
                                 dQ[iQ].topic = $scope.topics.filter(function(t) { return t.id == dQ[iQ].topic_id;})[0];
                                 dQ[iQ].difficulty = $scope.difficulties.filter(function(d) { return d.id == dQ[iQ].difficulty;})[0];
                             }
-                            $scope.selectQuestion(1);
-                            //TODO: stop loading and show UI!!
+                            $scope.selectQuestion(0);
                         });    
                     });
-                    
-                    
                 });
             }
         });
-        
-        //TODO: review https://docs.angularjs.org/api/ngResource/service/$resource
-        
-        /*
-        $scope.$watch("exam.course", function(newValue, oldValue) {
-            debugger;
-            if (newValue) {
-              $http.get('/api/v1/courses/' + newValue.id + '/topics').then(
-                    function(response){
-                        $scope.topics = response.data;
-                    },
-                    function(error){}
-                );  
-            }
-        });*/
         
         //functions
         $scope.setCourse = function(callback) {
@@ -70,17 +64,21 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
             
              http.get('/courses/' + $scope.exam.course.id + '/topics', function(s, d) {
                 $scope.topics = d;
-                callback();
+                if (callback) { callback();}
              });
         };
-        $scope.selectQuestion = function (currentQuestionNumber) {
-            var question = $scope.exam.questions[currentQuestionNumber-1];
-            if (isNaN(currentQuestionNumber)) {
+        $scope.selectQuestion = function (questionIndex) {
+            var question = null; 
+            if (isNaN(questionIndex)) {
                 //Must be an object
-                question = currentQuestionNumber;
-                currentQuestionNumber = $scope.exam.questions.indexOf(question);
+                question = questionIndex; //as object
+                $scope.currentQuestionNumber = $scope.exam.questions.indexOf(question) + 1;
+            } else {
+                question = $scope.exam.questions[questionIndex];
+                $scope.currentQuestionNumber = questionIndex + 1;
             }
-            $scope.currentQuestionIndex = currentQuestionNumber;
+            
+            question.active = true;
             
             if (!question.loaded) {
                 //TODO: loading...
@@ -89,33 +87,40 @@ app.controller('MakeExamCtrl', ['$scope', '$routeParams', '$q', 'http', '$locati
                     question.loaded = true;
                     
                     $scope.currentQuestion = question;
-                    
                 });
             } else {
                 $scope.currentQuestion = question;
             }
-            
         };
-        $scope.isQuestionSelected = function (q) {
-            return q == $scope.currentQuestion;
-        };
-        $scope.addQuestion = function () {
-            console.log('addQuestion');
+       
+        $scope.addQuestion = function (a,b,c) {
             var q = {
                 statement : '',
                 difficulty : $scope.difficulties[1],
-                choices : []
+                choices : [],
+                loaded : true,
+                topic : $scope.topics[0]
             };
             $scope.exam.questions.push(q);
-            this.selectQuestion(q);
+            $scope.selectQuestion(q);
+            
+            afterLoad(function() {
+                $scope.$broadcast('question-added');
+            });
+            
         };
+        
         $scope.addChoice  = function () {
-            console.log('addChoice');
             var c = {
                 statement : '',
                 selected : false
             };
             $scope.currentQuestion.choices.push(c);
+            
+            afterLoad(function() {
+                $scope.$broadcast('choice-added');
+            });
+            
         };
         
         

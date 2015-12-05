@@ -24,4 +24,22 @@ app.config(['$routeProvider',
         .otherwise({
             redirectTo: '/'
         });
-  }]);
+    }
+]);
+
+app.controller('MenuCtrl', ['$scope', '$location', '$cookies',
+function ($scope, $location, $cookies) {
+  
+  $scope.$on('$locationChangeSuccess', function( event ) { 
+      $scope.currentModule = getModule(); 
+  });
+
+  function getModule() {
+    var path = $location.path().toLowerCase().replace(/\/+$/, "");
+    if (path.endsWith('/exams')) return 'exam-list';
+    if (path.endsWith('/about')) return 'about';
+    if (path === '') return 'home';
+    return path;
+  };
+
+}]);

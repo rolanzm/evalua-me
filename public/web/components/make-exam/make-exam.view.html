@@ -1,31 +1,53 @@
-<div>
-    <h2>[exam new]</h2>
-
+<div class="make-exam">
     <div>
-        <input type="text" ng-model="exam.name"/>
-        <label>Asignatura</label>
-        <select class="form-control ng-pristine ng-valid ng-touched" ng-model="exam.course" ng-options="c.name for c in courses"  ng-change="setCourse()" ng-disabled="exam.questions.length > 0" ></select>
-
-        <button class="btn btn-sm btn-primary" ng-click="save()">Guardar</button>
+        <div>
+        <button class="btn btn-sm btn-primary" ng-click="save()">Guardar Examen</button>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon empty"></span>
+            <input type="text" id="txtExamName" class="form-control" ng-model="exam.name" placeholder="título" />
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon empty"></span>
+            <select class="form-control ng-pristine ng-valid ng-touched" 
+            ng-model="exam.course" ng-options="c.name for c in courses" 
+            ng-change="setCourse()" ng-disabled="exam.questions.length > 0" ></select>
+        </div>
     </div>
-    <uib-tabset>
-        <uib-tab ng-repeat="q in exam.questions" heading="{{q.id}}" active="currentQuestion"></uib-tab>
-    </uib-tabset>
-    <div class="questions-list">
-        <button class="btn btn-sm btn-primary" ng-click="addQuestion()">Add</button>
-        <div ng-repeat="q in exam.questions" ng-click="selectQuestion(q)">xx</div>
+    <div class="section section-active">
+        <uib-pagination total-items="exam.questions.length" ng-model="currentQuestionNumber" ng-change="selectQuestion(currentQuestionNumber-1)"
+        class="pagination-sm" boundary-links="true" items-per-page="1" template-url="components/make-exam/pagination.html"
+        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+        </uib-pagination>
     </div>
-    <div class="current-question" ng-show="currentQuestion">
-        <label>Dificultad</label><select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.difficulty" ng-options="d.name for d in difficulties"></select>
-        <!--<labe>Tipo</labe><select ng-model="currentQuestion.type" ng-options="c.name for c in courses"></select> -->
-        <labe>Tema</labe><select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.topic" ng-options="t.name for t in topics"></select>
-        <input type="textarea" ng-model="currentQuestion.statement" placeholder="(Enunciado)"/>
-        
-        <h3>Opciones</h3>
-        <button ng-click="addChoice()">Add</button>
-        <div ng-repeat="c in currentQuestion.choices">
-            <input type="checkbox" ng-model="c.selected" ng-checked="c.selected" />
-            <input type="textarea" ng-model="c.statement" />
+    <div id="current-question" class="section" ng-show="currentQuestion">
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">Dificultad</span>
+          <select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.difficulty" ng-options="d.name for d in difficulties"></select>
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">Tema</span>
+            <select class="form-control ng-pristine ng-valid ng-touched" ng-model="currentQuestion.topic" ng-options="t.name for t in topics"></select>
+        </div>
+        <div class="input-group input-group">
+            <span class="input-group-addon">Enunciado</span>
+            <textarea rows="5" class="form-control" ng-model="currentQuestion.statement" focus-on="question-added" placeholder="(Enunciado)"></textarea>
+        </div>
+        <div class="choices">
+            <div ng-repeat="c in currentQuestion.choices">
+                 <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" ng-model="c.selected" ng-checked="c.selected" />
+                  </span>
+                  <input type="text" class="form-control" ng-model="c.statement" focus-on="choice-added">
+                </div>
+            </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="checkbox" ng-disabled="true" />
+                  </span>
+                  <span ng-click="addChoice()" class="form-control add-choice">Añadir...</span>
+                </div>
         </div>
     </div>
 </div>
